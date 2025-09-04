@@ -1,0 +1,36 @@
+version: "3.9"
+
+
+services:
+backend:
+build: ./backend
+env_file:
+- ./backend/.env
+environment:
+DEBUG: "0"
+ALLOWED_HOSTS: "localhost,127.0.0.1"
+FRONTEND_ORIGIN: "http://localhost:8080"
+EMAIL_BACKEND: "django.core.mail.backends.console.EmailBackend"
+expose:
+- "8000"
+
+
+frontend:
+build: ./frontend
+environment:
+NEXT_PUBLIC_API_BASE_URL: "/api" # mismo dominio → sin CORS
+expose:
+- "3000"
+depends_on:
+- backend
+
+
+nginx:
+image: nginx:alpine
+ports:
+- "8080:80"
+volumes:
+- ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+depends_on:
+- frontend
+- backend

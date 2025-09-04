@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{ --container:1120px; }
+html,body{ @apply text-fg font-serif; background: linear-gradient(180deg, #143464 0%, #183464 55%, #143464 100%); }
+.container{ max-width:var(--container); margin:0 auto; padding:0 1rem; }
+
+/* Navbar más grande y legible */
+.nav{ @apply sticky top-0 z-50 backdrop-blur bg-primary/80 border-b border-line text-white; }
+.nav a{ @apply text-white; }
+
+/* Títulos grandes en mayúsculas al estilo ref */
+.h-title{ @apply uppercase tracking-wide; font-size:clamp(2.2rem,6vw,4.2rem); line-height:1.03; }
+.h-sub{ @apply uppercase tracking-wide; font-size:clamp(1.6rem,5vw,3rem); line-height:1.05; }
+
+/* Cards blancas para mejor contraste */
+.card{ @apply border rounded-2xl p-6 shadow-soft bg-white; border-color:rgba(20,52,100,.18); color:#143464; }
+.card:hover{ box-shadow:0 24px 60px rgba(0,0,0,.18); transform:translateY(-3px); transition:all .25s ease; }
+.badge{ @apply inline-block text-xs tracking-wider uppercase rounded-full px-2 py-1; border:1px solid rgba(20,52,100,.25); color:#143464; background:#f5f8ff; }
+
+/* Botones */
+.btn{ @apply inline-block border rounded-full px-5 py-3; border-color:rgba(255,255,255,.9); color:#fff; }
+.btn-cta{ @apply bg-white; color:#143464; }
+.btn-ghost{ @apply hover:bg-white/10; color:#fff; }
+
+/* Utilidades reveal */
+.reveal{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.visible{ opacity:1; transform:none; }
+
+/* Subrayado acento claro */
+.accent-underline{ position:relative; display:inline-block; }
+.accent-underline::after{ content:""; position:absolute; left:0; right:0; bottom:-.25rem; height:.5rem; background:linear-gradient(90deg, rgba(255,255,255,.18), rgba(255,255,255,.45)); filter:blur(.3px); }
+
+/* Inputs más grandes y legibles (form agendar) */
+input,select,textarea,button{ font-family:inherit; }
+input,select,textarea{ color:#143464; }
+input::placeholder, textarea::placeholder{ color:#6c86b8; opacity:1; }
+
+:root{ --cyan:#7fe7ff; }
+.h-line{ position:relative; height:1px; background:linear-gradient(90deg, transparent, rgba(127,231,255,.4), transparent); margin:12px 0; }
+.card-dark{ background:rgba(11,25,64,.45); border-radius:18px; padding:22px; backdrop-filter: blur(2px); }
+.outline-cyan{ border:1px solid rgba(127,231,255,.45); }
+.hl{ background:rgba(127,231,255,.22); box-shadow:0 0 0 1px rgba(127,231,255,.28) inset; padding:.05em .3em; border-radius:.3rem; }
+.pill{ display:inline-block; padding:.95rem 1.4rem; border-radius:999px; border:1.5px solid rgba(255,255,255,.85); text-decoration:none; }
+.question{ font-size:clamp(1.8rem,5vw,3rem); line-height:1.2; letter-spacing:.02em; }
+.claim-top{ font-size:clamp(1.4rem,4vw,2.4rem); opacity:.9; }
+.claim-main{ font-size:clamp(2.4rem,7vw,5rem); font-weight:800; font-style:italic; text-transform:lowercase; }
+.fade-img{ position:absolute; inset:0; pointer-events:none; background:radial-gradient(60% 60% at 70% 40%, rgba(127,231,255,.25), transparent 60%) , radial-gradient(40% 40% at 30% 70%, rgba(127,231,255,.12), transparent 60%); filter:blur(2px); }
+
+
+/* LOGIN helpers */
+.login-wrap{ background: linear-gradient(180deg, #143464 0%, #183464 60%, #143464 100%); }
+.login-field{ @apply w-full rounded-xl px-4 py-3 bg-[rgba(12,22,48,.85)] border border-[rgba(127,231,255,.35)] text-white; }
+.login-field::placeholder{ color: rgba(200,220,255,.75); }
+.login-button{ @apply rounded-full border px-5 py-3 font-semibold; border-color: rgba(127,231,255,.75); background: linear-gradient(180deg,#7fe7ff 0%,#9ff0ff 100%); color:#0f2a5c; }
+
+/* Reutilizables ya usados en Sobre Nosotros */
+.outline-cyan{ border:1px solid rgba(127,231,255,.45); }
+.card-dark{ background:rgba(11,25,64,.45); backdrop-filter: blur(2px); }
+
+/* Overlay móvil del menú */
+.mobile-overlay{ position:fixed; inset:0; background:rgba(10,16,40,.6); backdrop-filter:blur(4px); display:grid; place-items:center; z-index:60; }
+.mobile-panel{ width:min(92vw,520px); background:rgba(11,25,64,.95); border:1px solid rgba(127,231,255,.35); border-radius:16px; padding:22px; color:#fff; }
+.mobile-close{ position:absolute; top:18px; right:18px; border:1px solid rgba(255,255,255,.3); border-radius:999px; padding:.25rem .55rem; }
+
+/* Evitar recortes en links del nav en algunos navegadores */
+.nav a { line-height: 1; display: inline-block; }
+
+
+/* Helpers de tipografía para bloques de texto largos */
+.copy-lg p { @apply text-[18px] md:text-[19px] leading-8 md:leading-9 font-medium text-white/90; }
+.copy-lg strong { @apply text-white; }
