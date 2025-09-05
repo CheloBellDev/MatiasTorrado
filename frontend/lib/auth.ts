@@ -99,3 +99,20 @@ export function bootAuth(){
   const a = getAccessToken(); const r = getRefreshToken();
   if (a && r) scheduleRefresh(a, r);
 }
+
+export function isLoggedIn(): boolean {
+  try {
+    return !!localStorage.getItem("access");
+  } catch {
+    return false;
+  }
+}
+
+export function logout(): void {
+  try {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+  } catch {
+    // ignore
+  }
+}
